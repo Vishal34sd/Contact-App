@@ -1,16 +1,19 @@
-import express from "express" ;
-import dotenv from "dotenv" ;
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import connectDB from "./config/db.js";
+import contactRoutes from "./routes/contactRoutes.js";
+
 dotenv.config();
+connectDB();
 
-const PORT = process.env.PORT ;
+const app = express();
 
-const app = express() ;
+app.use(cors());
+app.use(express.json());
 
+app.use("/api/contacts", contactRoutes);
 
-
-
-
-
-app.listen(PORT , ()=>{
-    console.log(`Server is running on  ${PORT}`);
-})
+app.listen(5000, () => {
+  console.log("Server running on port 5000");
+});
