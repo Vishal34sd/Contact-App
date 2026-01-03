@@ -1,14 +1,31 @@
 import Contact from "../models/Contact.js";
 
 // POST contact
+
 export const createContact = async (req, res) => {
   try {
-    const contact = await Contact.create(req.body);
+    const { name, email, phone, message } = req.body;
+
+    if (!name || !email || !phone) {
+      return res.status(400).json({
+        message: "Name, email and phone are required",
+      });
+    }
+
+    const contact = await Contact.create({
+      name,
+      email,
+      phone,
+      message,
+    });
+
     res.status(201).json(contact);
   } catch (error) {
-    res.status(400).json({ message: "Contact not saved" });
+    console.log("ERROR 👉", error.message); // 👈 ADD THIS
+    res.status(400).json({ message: error.message });
   }
 };
+
 
 // GET contacts
 export const getContacts = async (req, res) => {
@@ -20,7 +37,7 @@ export const getContacts = async (req, res) => {
   }
 };
 
-// DELETE contact 
+// DELETE contact
 export const deleteContact = async (req, res) => {
   try {
     await Contact.findByIdAndDelete(req.params.id);
