@@ -18,7 +18,7 @@ export default function ContactForm({ onAdd }) {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/contacts/create",
+        `${import.meta.env.VITE_BACKEND_URL}/api/contact/create`,
         form
       );
       onAdd(res.data);
@@ -68,10 +68,11 @@ export default function ContactForm({ onAdd }) {
         value={form.message}
         onChange={(e) => setForm({ ...form, message: e.target.value })}
       />
-
+     
+     <div className = "flex justify-center">
       <button
         disabled={!isValid}
-        className={`w-full py-2 rounded text-white font-medium ${
+        className={`w-1/5 center py-2 rounded text-white font-medium ${
           isValid
             ? "bg-blue-500 hover:bg-blue-600"
             : "bg-gray-400 cursor-not-allowed"
@@ -79,6 +80,7 @@ export default function ContactForm({ onAdd }) {
       >
         Submit
       </button>
+      </div>
     </form>
   );
 }

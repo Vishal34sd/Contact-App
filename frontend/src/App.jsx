@@ -11,11 +11,11 @@ export default function App() {
     const fetchContacts = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:8080/api/contacts/fetch"
+          `${import.meta.env.VITE_BACKEND_URL}/api/contact/fetch`
         );
         setContacts(res.data);
       } catch {
-        alert("Failed to load contacts ❌");
+        alert("Failed to load contacts ");
       }
     };
     fetchContacts();

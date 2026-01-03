@@ -4,7 +4,7 @@ export default function ContactList({ contacts, onDelete }) {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/contacts/delete/${id}`
+        `${import.meta.env.VITE_BACKEND_URL}/api/contact/delete/${id}`
       );
       onDelete(id);
     } catch {
