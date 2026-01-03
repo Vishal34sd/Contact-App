@@ -11,7 +11,7 @@ export default function App() {
     const fetchContacts = async () => {
       try {
         const res = await axios.get(
-          `${import.meta.env.VITE_BACKEND_URL}/api/contact/fetch`
+          `${import.meta.env.VITE_BACKEND_URL}/api/contacts/fetch`
         );
         setContacts(res.data);
       } catch {

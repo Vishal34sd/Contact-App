@@ -21,7 +21,6 @@ export const createContact = async (req, res) => {
 
     res.status(201).json(contact);
   } catch (error) {
-    console.log("ERROR 👉", error.message); // 👈 ADD THIS
     res.status(400).json({ message: error.message });
   }
 };

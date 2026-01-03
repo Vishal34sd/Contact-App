@@ -18,7 +18,7 @@ export default function ContactForm({ onAdd }) {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/contact/create`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/contacts/create`,
         form
       );
       onAdd(res.data);
