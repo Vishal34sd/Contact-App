@@ -3,12 +3,12 @@ import {
   createContact,
   getContacts,
   deleteContact
-} from "../controllers/contactController.js";
+} from "../controllers/contactControllers.js";
 
 const router = express.Router();
 
-router.post("/", createContact);
-router.get("/", getContacts);
-router.delete("/:id", deleteContact);
+router.post("/create", createContact);
+router.get("/fetch", getContacts);
+router.delete("/delete/:id", deleteContact);
 
 export default router;
